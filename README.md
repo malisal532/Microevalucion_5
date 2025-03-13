@@ -9,9 +9,12 @@
   -pc (4)
  
   -switch (4)
+  
 #Realizamos la conexcion con los cables 
+   
    -copeer cross-over
    -
+
 # Hacemos las conexciones mediantes las ip
 se hace las conexciones de cada router con su respectivo ip en la terminal
 #
