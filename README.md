@@ -11,3 +11,5 @@
    -copeer cross-over
    -
 # Hacemos las conexciones mediantes las ip
+se hace las conexciones de cada router con su respectivo ip en la terminal
+#
