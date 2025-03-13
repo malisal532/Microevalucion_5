@@ -9,7 +9,7 @@
   -pc (4)
  
   -switch (4)
-  
+
 #Realizamos la conexcion con los cables 
    
    -copeer cross-over
