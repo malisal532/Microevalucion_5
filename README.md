@@ -1,11 +1,6 @@
-Aquí tienes un **README.md** en un solo bloque, bien estructurado y claro para tu repositorio en Git. 🚀  
+  
 
----
-
-### **README.md**  
-
-```markdown
-# 🖧 Configuración de Router Cisco en Packet Tracer 🚀
+---# 🖧 Configuración de Router Cisco en Packet Tracer 🚀
 
 Este documento explica paso a paso cómo configurar un **router Cisco** en **Packet Tracer**, incluyendo asignación de IP, activación de interfaces y configuración de rutas.
 
