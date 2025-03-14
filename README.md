@@ -1,25 +1,43 @@
-  
 
----# 🖧 Configuración de Router Cisco en Packet Tracer 🚀
+### **README.md**  
 
-Este documento explica paso a paso cómo configurar un **router Cisco** en **Packet Tracer**, incluyendo asignación de IP, activación de interfaces y configuración de rutas.
+# 🖧 Configuración de Red en Cisco Packet Tracer 🚀  
+
+Este proyecto muestra la configuración de un **sistema de red en Cisco Packet Tracer**, incluyendo la asignación de direcciones IP, activación de interfaces y configuración de rutas.  
+
+## 📌 1. Descripción del Sistema  
+
+La red configurada en **Cisco Packet Tracer** incluye:  
+
+- **1 Router Cisco** (modelo 2911 o 1841).  
+- **1 Switch** para la conexión de dispositivos.  
+- **2 PCs o más** para pruebas de conectividad.  
+- **Asignación de direcciones IP en subredes específicas**.  
+
+ **Topología de la Red** (basada en la imagen proporcionada):  
+- El **router** tiene la IP `200.30.40.1` en la interfaz `FastEthernet0/0`.  
+- El **switch** distribuye la conexión a múltiples dispositivos en la red local.  
+- Cada **PC** tiene una IP dentro de la subred `200.30.40.0/24`.  
+- Se configura una **ruta estática** para la comunicación con redes externas.  
 
 ---
 
-## ⚡ 1. Acceder al Modo de Configuración
+## ⚡ 2. Acceder al Modo de Configuración  
 
-Para iniciar sesión en el router y entrar en modo de configuración global:
+Para ingresar al router y comenzar la configuración, usamos:  
 
 ```bash
 Router> enable
 Router# configure terminal
 ```
 
+Esto nos lleva al modo de configuración global.
+
 ---
 
-## 🔧 2. Configurar la Interfaz de Red  
+## 🔧 3. Configurar la Interfaz del Router  
 
-Asignamos una dirección IP a la interfaz **FastEthernet0/0** y la activamos:  
+Asignamos una dirección IP a la interfaz principal del router y la activamos:  
 
 ```bash
 Router(config)# interface FastEthernet0/0
@@ -29,31 +47,63 @@ Router(config-if)# exit
 ```
 
 ✅ **Explicación:**  
-- `interface FastEthernet0/0` → Entramos a la interfaz.  
-- `ip address 200.30.40.1 255.255.255.0` → Asignamos la dirección IP y la máscara de subred.  
-- `no shutdown` → Activamos la interfaz (por defecto está apagada).  
+- `interface FastEthernet0/0` → Accedemos a la interfaz.  
+- `ip address 200.30.40.1 255.255.255.0` → Asignamos una IP y la máscara de subred.  
+- `no shutdown` → Activamos la interfaz.  
 
-Si todo está bien, veremos:  
+Si la configuración es correcta, aparecerá este mensaje:  
 ```
 %LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
 ```
 
 ---
 
-## 🌍 3. Configurar una Ruta Estática (Opcional)  
+## 🌍 4. Configuración de Rutas Estáticas (Opcional)  
 
-Si queremos que el router sepa cómo enviar tráfico a otras redes, añadimos una ruta por defecto:  
+Si hay más de una red conectada, configuramos una ruta estática para la salida a internet o a otra red:  
 
-```bash
+
 Router(config)# ip route 0.0.0.0 0.0.0.0 200.30.40.2
 ```
-Esto redirige el tráfico desconocido a **200.30.40.2** (otro router o gateway).
+Esto indica que **todo el tráfico desconocido** será enviado a `200.30.40.2` (otro router o gateway).
 
 ---
 
-## 💾 4. Guardar la Configuración  
+## 🖥 5. Configuración de los PCs  
 
-Para evitar perder los cambios después de un reinicio, guardamos la configuración con:
+Cada PC necesita una dirección IP dentro de la misma subred. En cada PC, configuramos:  
+
+- **IP:** `200.30.40.10` (o cualquier IP dentro de `200.30.40.0/24`).  
+- **Máscara:** `255.255.255.0`  
+- **Gateway:** `200.30.40.1` (IP del router).  
+
+Esto se puede hacer en la configuración de la **tarjeta de red (NIC)** de cada PC en **Packet Tracer**.
+
+---
+
+## 🛠 6. Prueba de Conectividad  
+
+Podemos verificar la conectividad entre dispositivos usando **ping**:  
+
+```bash
+PC> ping 200.30.40.1
+```
+Si todo está bien, veremos respuestas exitosas:  
+```
+Reply from 200.30.40.1: bytes=32 time<1ms TTL=64
+```
+
+También podemos revisar las configuraciones del router con:  
+
+```bash
+Router# show ip interface brief
+```
+
+---
+
+## 💾 7. Guardar la Configuración  
+
+Para evitar perder los cambios, guardamos la configuración con:  
 
 ```bash
 Router# write memory
@@ -65,15 +115,15 @@ Router# copy running-config startup-config
 
 ---
 
-## 🎯 Conclusión  
+## 🎯 8. Conclusión  
 
-¡Listo! Ahora el router está configurado con una dirección IP, la interfaz activada y una ruta estática opcional.  
-Este es el primer paso para construir una red funcional en **Cisco Packet Tracer**. 🚀  
+Con esta configuración, hemos logrado:  
 
-📌 **Si necesitas más configuraciones, abre un issue o contribuye al repositorio.**  
-```
+✅ Establecer la conexión del **router con la red local**.  
+✅ Asignar direcciones **IP estáticas** a las interfaces.  
+✅ Configurar una **ruta estática** para la comunicación con otras redes.  
+✅ Permitir la conectividad entre **PCs y el router**.  
 
----
+Este es un ejemplo básico, pero se puede expandir con **DHCP, NAT, VLANs y más**. 🚀  
 
-Este archivo README es compacto y directo, **listo para subir a GitHub**. 📂  
-📌 **¿Quieres agregar más detalles o imágenes?** 🚀
+
